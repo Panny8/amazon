@@ -4,7 +4,7 @@ import Product from './Product'
 
 export default function ProductFeed({products}) { 
     return (
-    <div className='grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:-mt-52 mx-auto'>
+    <div className='grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:-mt-52'>
     {products.slice(0,4).map(({id, title, price, description, category, image }) => (
      <Product 
         key={id}
@@ -16,7 +16,7 @@ export default function ProductFeed({products}) {
      />
  ))}
  <img 
-    className='md:col-span-full'
+    className='md:col-span-full w-full h-48'
     src="https://links.papareact.com/dyz"
     alt=""
     />

@@ -6,7 +6,7 @@ export default function Header() {
     return (
      <header>
         {/*TOP NAV*/}
-      <div className='flex items-center bg-amazon_blue-default p-1 py-2 flex-grow'>
+      <div className='flex items-center bg-amazon_blue-default p-1 py-2 flex-grow w-full'>
         <div className=' mt-2 flex items-center flex-grow sm:flex-grow-0 justify- mx-2'>
             <Image 
              src="https://links.papareact.com/f90"
@@ -39,7 +39,7 @@ export default function Header() {
         </div>
       </div>
       {/*BOTTOM NAV*/}
-      <div className='bg-amazon_blue-light text-white flex space-x-3 p-2 pl-2 '>
+      <div className='bg-amazon_blue-lights text-white flex space-x-3 p-2 pl-2 '>
         <p className='flex link text-center'>
           <HiBars4 className='flex h-6 right-1' size='2rem'/>
            All

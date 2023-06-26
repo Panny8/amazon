@@ -6,13 +6,13 @@ import React from 'react'
 
 export default function index({products}) {
   return (
-    <div className='bg-gray-100 max-w-screen-2xl'>
+    <div className='max-w-full bg-gray-100'>
       <Head>
         <title>Amazon</title>
       </Head>
-     <Header />
+     <Header/>
 
-    <main className="mx-20  max-w-screen-2xl">
+    <main className="max-w-full">
       {/*BANNER*/}
       <Banner />
       {/*PRODUCTFEED*/}
