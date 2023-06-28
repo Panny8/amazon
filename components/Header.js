@@ -1,14 +1,24 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react'
 import Image from 'next/image'
 import { HiOutlineMagnifyingGlass, HiBars4, HiShoppingCart } from "react-icons/hi2";
+import { useSession, signIn, signOut } from "next-auth/react"
+import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
+import { selectItems } from '@/slices/basketSlice';
+
 export default function Header() {
+  const items = useSelector(selectItems)
+  const router = useRouter();
+  const { data: session } = useSession()
     return (
      <header>
         {/*TOP NAV*/}
       <div className='flex items-center bg-amazon_blue-default p-1 py-2 flex-grow w-full'>
         <div className=' mt-2 flex items-center flex-grow sm:flex-grow-0 justify- mx-2'>
             <Image 
+            onClick={() => router.push("/")}
              src="https://links.papareact.com/f90"
              width={150}
              height={40}
@@ -23,16 +33,20 @@ export default function Header() {
         </div>
         {/*RIGHT*/}
         <div className='text-white flex items-center space-x-6 mx-6 text-xs whitespace-nowrap'>
-          <div className='link'>
-            <p>Hello Mr Panny</p>
+          <div className='link' onClick={!session ? signIn : signOut}>
+            <p className='hover:underline'>
+            {session ? `Hello, ${session.user.name}` :"Sign in"}
+            </p>
             <p className='font-extrabold md:text-sm'>Account & List</p>
           </div>
           <div className='link'>
             <p>Returns</p>
             <p className='font-extrabold md:text-sm'>& Orders</p>
           </div>
-          <div className='link relative flex items-center'>
-            <span className='absolute right-0 top-0 md:right-10 bg-yellow-400 text-center text-black font-bold w-4 h-4 rounded-full'>0</span>
+          <div onClick={() => router.push("/checkout")} className='link relative flex items-center'>
+            <span className='absolute right-0 top-0 md:right-10 bg-yellow-400 text-center text-black font-bold w-4 h-4 rounded-full'>
+              {items.length}
+            </span>
             <HiShoppingCart className='h-10' size='2rem'/>
             <p className='font-extrabold md:text-sm hidden md:inline mt-2'>Basket</p>
           </div>
