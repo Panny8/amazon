@@ -12,6 +12,9 @@ export default function Header() {
   const items = useSelector(selectItems)
   const router = useRouter();
   const { data: session } = useSession()
+  const handleGoogleSignin = () => {
+    signIn("google", {callbackUrl: "https://localhost:3000"})
+  }
     return (
      <header>
         {/*TOP NAV*/}
@@ -33,9 +36,9 @@ export default function Header() {
         </div>
         {/*RIGHT*/}
         <div className='text-white flex items-center space-x-6 mx-6 text-xs whitespace-nowrap'>
-          <div className='link' onClick={!session ? signIn : signOut}>
+          <div className='link' onClick={() => router.push("/login")} >
             <p className='hover:underline'>
-            {session ? `Hello, ${session.user.name}` :"Sign in"}
+            {session ? `Hello, ${session.user.name}` : "SignIn"}
             </p>
             <p className='font-extrabold md:text-sm'>Account & List</p>
           </div>
