@@ -12,9 +12,6 @@ export default function Header() {
   const items = useSelector(selectItems)
   const router = useRouter();
   const { data: session } = useSession()
-  const handleGoogleSignin = () => {
-    signIn("google", {callbackUrl: "https://localhost:3000"})
-  }
     return (
      <header>
         {/*TOP NAV*/}
